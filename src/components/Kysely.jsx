@@ -1,10 +1,16 @@
 function Kysely({ kysely }) {
   return (
     <div>
-      Id: {kysely.kyselyId}
-      Otsikko: {kysely.otsikko}
-      Kysymykset: {kysely.kysymykset.kysymysTeksti}
-      <br />
+      <div>Id: {kysely.kyselyId}</div>
+      <div>Otsikko: {kysely.otsikko}</div>
+      <div>
+        Kysymykset:
+        <ul>
+          {kysely.kysymykset.map((kysymys, index) => (
+            <li key={index}>{kysymys.kysymysTeksti}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
