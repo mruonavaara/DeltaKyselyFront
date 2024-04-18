@@ -15,7 +15,7 @@ function App() {
   // Funktio, joka hakee kyselyt tietokannasta
   const fetchKyselyt = async () => {
     try {
-      const response = await fetch("http://backend-deltakysely-back.rahtiapp.fi/kyselyt");
+      const response = await fetch("http://backend-deltakysely-back.rahtiapp.fi/kyselyt/1");
       const data = await response.json();
       setKyselyt(data); // Asetetaan haetut kyselyt stateen
     } catch (error) {
