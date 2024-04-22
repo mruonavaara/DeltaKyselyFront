@@ -22,12 +22,30 @@ function App() {
       console.error("Virhe haettaessa kyselyitä:", error);
     }
   };
+  const tallennaVastaukset = async (vastaukset) => {
+    try {
+      const response = await fetch("http://backend-deltakysely-back.rahtiapp.fi/kyselyt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(vastaukset),
+      });
+      if (response.ok) {
+        console.log("Vastaukset tallennettu onnistuneesti!");
+      } else {
+        console.error("Vastauksien tallentaminen epäonnistui.");
+      }
+    } catch (error) {
+      console.error("Virhe tallennettaessa vastauksia:", error);
+    }
+  };
 
   return (
     <div>
       {/* Näytetään kyselyt */}
-      {kyselyt.map((kysely, index) => (
-        <Kysely key={index} kysely={kysely} />
+      {kyselyt.map((kysely, kyselyId) => (
+        <Kysely key={kyselyId} kysely={kysely} tallennaVastaukset={tallennaVastaukset} />
       ))}
     </div>
   );
