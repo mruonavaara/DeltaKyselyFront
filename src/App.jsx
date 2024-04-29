@@ -12,19 +12,20 @@ function App() {
     fetchKyselyt();
   }, []);
 
-  // Funktio, joka hakee kyselyt tietokannasta
+  // Funktio, joka hakee kyselyt tietokannasta http://backend-deltakysely-back.rahtiapp.fi/kyselyt/1
   const fetchKyselyt = async () => {
     try {
-      const response = await fetch("http://backend-deltakysely-back.rahtiapp.fi/kyselyt/1");
+      const response = await fetch("http://localhost:8080/kyselyt/1");
       const data = await response.json();
       setKyselyt(data); // Asetetaan haetut kyselyt stateen
     } catch (error) {
       console.error("Virhe haettaessa kyselyitä:", error);
     }
   };
+  //http://backend-deltakysely-back.rahtiapp.fi/kyselyt
   const tallennaVastaukset = async (vastaukset) => {
     try {
-      const response = await fetch("http://backend-deltakysely-back.rahtiapp.fi/kyselyt", {
+      const response = await fetch("http://localhost:8080/vastaukset", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
