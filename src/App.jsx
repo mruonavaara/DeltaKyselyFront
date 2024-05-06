@@ -13,6 +13,7 @@ function App() {
       <nav>
         <Link to={"/"}>Etusivu</Link>
         <Link to={"/kyselyt"}>Kyselyt</Link>
+        
       </nav>
       <Outlet />
     </div>
