@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import KyselynNäyttö from "./KyselynNäyttö";
 
 export default function Kysely({ kysely, tallennaVastaukset }) {
   const [vastaukset, setVastaukset] = useState({});
